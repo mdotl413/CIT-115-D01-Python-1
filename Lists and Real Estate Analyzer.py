@@ -1,3 +1,5 @@
+#Lists and Real Estate Analyzer
+
 def getFloatInput(prompt):
     
     # Prompts the user for a float input.
