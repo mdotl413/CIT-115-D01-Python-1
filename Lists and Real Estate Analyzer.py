@@ -1,8 +1,8 @@
 def getFloatInput(prompt):
     
-    # Prompts the user for a float input with validation.
-    # - Re-prompts if input is not a number.
-    # Re-prompts if input is not positive and non-zero.
+    # Prompts the user for a float input.
+    #  Reprompts if input is not a number.
+    # Re-prompts if the input is not greater than zero.
     
     while True:
         try:
@@ -16,12 +16,11 @@ def getFloatInput(prompt):
 
 def getMedian(num_list):
     
-    # Calculates the median of a list of numbers without using the statistics module.
-    # Assumes the list is already sorted.
+    # Calculates the median of a list of numbers.
     
     count = len(num_list)
     
-    # If the list is empty, return 0 to avoid errors
+    # If the list is empty, return 0
     if count == 0:
         return 0.0
     
@@ -33,39 +32,37 @@ def getMedian(num_list):
         return num_list[mid_index]
     else:
         # If the number of entries is even, average the two middle entries
-        # (The one at mid_index and the one immediately before it)
+        # The one at mid_index and the one immediately before it
         val1 = num_list[mid_index]
         val2 = num_list[mid_index - 1]
         return (val1 + val2) / 2
 
 def main():
-    # List to store all user inputted sales values
+    # List for all user inputted sales values
     sales_list = []
     
-    # --- Input Loop ---
+    # Input Loop
     while True:
-        # Call getFloatInput to prompt for sales price
+        # prompt for sales price
         price = getFloatInput("Enter property sales value: ")
         sales_list.append(price)
 
-        # Loop to ensure user enters Y, y, N, or n
+        # Loop so user can enter Y, y, N, or n
         while True:
             continue_input = input("Enter another value Y or N: ").strip().lower()
             if continue_input in ['y', 'n']:
                 break
-            # Note: The assignment implies silent repetition or a specific behavior 
-            # if invalid char is entered, this loop handles "keep asking until..."
+            
             
         if continue_input == 'n':
             break
 
-    # --- Processing ---
     # Sort the list from smallest value to largest
     sales_list.sort()
     
     count = len(sales_list)
     
-    # Calculate metrics
+    # Calculate the metrics
     if count > 0:
         min_val = min(sales_list)
         max_val = max(sales_list)
@@ -77,16 +74,15 @@ def main():
         # Handle case with 0 entries just in case
         min_val = max_val = total_val = avg_val = median_val = commission = 0.0
 
-    # --- Output ---
-    # Print a blank line to match sample output style
+    # Output
     print()
     
     # Output each entry in the sorted list
     for i in range(count):
-        # i + 1 is used because list indexes start at 0 but property counts usually start at 1
+        
         print(f"Property {i + 1} $ {sales_list[i]:,.2f}")
 
-    # Output analytics formatted as currency with 2 decimal positions
+    # Output displayed as currency with 2 decimal positions
     print(f"Minimum:    $ {min_val:,.2f}")
     print(f"Maximum:    $ {max_val:,.2f}")
     print(f"Total:      $ {total_val:,.2f}")
@@ -94,6 +90,6 @@ def main():
     print(f"Median:     $ {median_val:,.2f}")
     print(f"Commission: $ {commission:,.2f}")
 
-# Call the main function to run the program
+# run the program
 if __name__ == "__main__":
     main()
